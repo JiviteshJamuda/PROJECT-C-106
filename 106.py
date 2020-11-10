@@ -3,14 +3,14 @@ import plotly.express as px
 import numpy as np
 
 def get_data_src(data_path):
-    Temperature = []
-    ice_sales = []
+    marks = []
+    days = []
     with open(data_path) as csv_file:
         data = csv.DictReader(csv_file)
         for row in data :
-            Temperature.append(float(row["Marks In Percentage"]))
-            ice_sales.append(float(row["Days Present"]))
-    return{"x":Temperature, "y":ice_sales}
+            marks.append(float(row["Marks In Percentage"]))
+            days.append(float(row["Days Present"]))
+    return{"x":marks, "y":days}
 
 def find_correlation(data) :
     correlation = np.corrcoef(data["x"],data["y"])
